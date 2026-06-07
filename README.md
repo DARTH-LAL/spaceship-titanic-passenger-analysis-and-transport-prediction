@@ -2,27 +2,19 @@
 
 This project is about analyzing Spaceship Titanic passenger data and building a model to predict which passengers were transported to an alternate dimension in the [Kaggle competition](https://www.kaggle.com/competitions/spaceship-titanic).
 
-It is packaged as a data-analysis-focused portfolio project: the repository emphasizes data cleaning, feature engineering, evaluation, and a reproducible training workflow rather than only a final submission file.
+This repository currently uses a same-seed multi-config CatBoost blend with analytics-focused feature engineering for passenger groups, cabin structure, spending behavior, and family signals.
 
-## Portfolio Focus
+## Project Layout
 
-- exploratory thinking around passenger behavior, cabin structure, and spending patterns
-- practical data preparation for messy real-world competition data
-- feature engineering for groups, families, cabin layout, and spending intensity
-- gradient-boosted modeling with CatBoost for mixed numeric and categorical data
-- repeatable training and submission generation from a single script
+- `train_and_submit.py`: training, feature engineering, cross-validation, and submission file generation
+- `requirements.txt`: minimal Python dependencies for the current script
+- `README.md`: project overview and run instructions
 
-## Repository Layout
-
-- `train_and_submit.py`: end-to-end pipeline for feature engineering, validation, training, and submission generation
-- `requirements.txt`: project dependencies
-- `README.md`: project overview, setup, and usage notes
-
-Competition data, generated submissions, and CatBoost artifacts are intentionally excluded from version control.
+Competition data and generated submissions are intentionally excluded from version control.
 
 ## Environment
 
-Verified with:
+This project was verified with:
 
 - Python `3.13`
 - `numpy==2.1.3`
@@ -30,6 +22,8 @@ Verified with:
 - `catboost==1.2.10`
 
 ## Setup
+
+Create a virtual environment and install dependencies:
 
 ```bash
 python3.13 -m venv .venv
@@ -40,41 +34,49 @@ python -m pip install -r requirements.txt
 
 ## Data
 
-After joining the Kaggle competition and accepting its rules, download these files from the competition page and place them in the project root:
+Accept the Kaggle competition rules, then download the competition files yourself from the competition page:
 
 - `train.csv`
 - `test.csv`
 - `sample_submission.csv`
 
-Those files are ignored by git so the repository stays safe to publish.
+Place those files in the project root before running the script.
 
 ## Run
 
-Train the model and generate `submission.csv`:
+Train the model and create a Kaggle submission:
 
 ```bash
 python3.13 train_and_submit.py
 ```
 
-If you want to skip cross-validation and only write a submission:
+If you want to skip cross-validation and write only the submission file:
 
 ```bash
 python3.13 train_and_submit.py --skip-cv
 ```
 
-## Modeling Approach
+The script writes predictions to:
+
+```text
+submission.csv
+```
+
+## Modeling Notes
 
 The current pipeline includes:
 
-- rule-based imputations for missing passenger and spending fields
-- engineered features for passenger groups, family structure, cabin location, and total spend behavior
-- cabin-derived categorical features such as `CabinDeck`, `CabinSide`, and `DeckSide`
-- a CatBoost-based blended classifier tailored to mixed-type competition data
+- rule-based imputations for `CryoSleep`, `HomePlanet`, `Destination`, and `Age`
+- engineered features such as `GroupSize`, `FamilySize`, `TotalSpend`, `LogTotalSpend`, `SpendPerAge`, and `LuxurySpend`
+- categorical cabin-derived features such as `CabinDeck`, `CabinSide`, and `DeckSide`
+- a two-model CatBoost blend built from closely related feature sets
 
-## Public Repo Notes
+## Publishing Note
 
-- Kaggle competition CSV files are gitignored
+This repository is set up to be GitHub-friendly:
+
+- Kaggle competition data is gitignored
 - generated `submission.csv` files are gitignored
 - CatBoost training artifacts are gitignored
 
-That keeps the repository focused on analysis and modeling code while leaving competition assets local.
+That makes it safe to publish the code and documentation while keeping competition files local.

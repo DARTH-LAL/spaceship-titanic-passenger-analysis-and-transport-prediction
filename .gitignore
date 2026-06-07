@@ -1,5 +1,4 @@
 .DS_Store
-
 __pycache__/
 *.pyc
 *.pyo
@@ -9,22 +8,12 @@ __pycache__/
 venv/
 env/
 
+catboost_info/
 .ipynb_checkpoints/
 
-# Kaggle competition data
 train.csv
 test.csv
 sample_submission.csv
-kaggle.json
-
-# Generated submissions
 submission.csv
-submission*.csv
 
-# CatBoost artifacts
-catboost_info/
-*.cbm
-catboost_training.json
-learn_error.tsv
-test_error.tsv
-time_left.tsv
+kaggle.json
