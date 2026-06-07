@@ -1,4 +1,4 @@
-# Spaceship Titanic Data Analytics
+# Spaceship Titanic Data Analysis
 
 A data analytics and machine learning project for the [Spaceship Titanic competition](https://www.kaggle.com/competitions/spaceship-titanic). The goal is to predict which passengers were transported to an alternate dimension using recovered ship records.
 
