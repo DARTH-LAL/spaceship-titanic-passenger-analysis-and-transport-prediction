@@ -1,8 +1,8 @@
-# Spaceship Titanic
+# Spaceship Titanic Data Analytics
 
-A Kaggle project for the [Spaceship Titanic competition](https://www.kaggle.com/competitions/spaceship-titanic). The goal is to predict which passengers were transported to an alternate dimension using recovered ship records.
+A data analytics and machine learning project for the [Spaceship Titanic competition](https://www.kaggle.com/competitions/spaceship-titanic). The goal is to predict which passengers were transported to an alternate dimension using recovered ship records.
 
-This repository currently uses a same-seed multi-config CatBoost blend with feature engineering for passenger groups, cabin structure, spending behavior, and family signals.
+This repository currently uses a same-seed multi-config CatBoost blend with analytics-focused feature engineering for passenger groups, cabin structure, spending behavior, and family signals.
 
 ## Project Layout
 
